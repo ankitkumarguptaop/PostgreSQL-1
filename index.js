@@ -1,13 +1,17 @@
-const express =require("express")
+const express = require("express");
+const {dbConnection} = require("./configs/db")
+dbConnection()
 const dotenv = require("dotenv");
-dotenv.config()
+dotenv.config();
 const app = express();
+const bodyParser = require("body-parser");
 
-
-// app.use("/", require("./routes"));
+app.use(bodyParser.json());
+app.use("/", require("./routes"));
 
 const APP_PORT = process.env.APP_PORT || 8080;
 
-app.listen(APP_PORT , ()=>{
-    console.log("server started" ,APP_PORT)
-})
+app.listen(APP_PORT, () => {
+  console.log("server started", APP_PORT);
+});
+

@@ -4,8 +4,8 @@ const {
   Sequelize
 } = require('sequelize');
 
-const sequelize =require("../../configs/db")
-module.exports = sequelize.define('user',{
+const {sequelize} =require("../../configs/db")
+module.exports = sequelize.define('users',{
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -31,7 +31,7 @@ module.exports = sequelize.define('user',{
   }
 },{
   freezeTableName:true,
-   modelName : "User"
+   modelName : "users"
 }
 
 )

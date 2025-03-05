@@ -40,3 +40,18 @@ exports.listUser = async (req, res) => {
       res.status(error.statusCode || 500).json({ error: error.message });
     }
   };
+
+
+  exports.createUser = async (req, res) => {
+    try {
+      const response = await userService.createUser({
+        body:req.body
+      });
+      res
+        .status(200)
+        .json({ message: "successfuly created user", user: response });
+    } catch (error) {
+      console.log("Failed to create user", error.message);
+      res.status(error.statusCode || 500).json({ error: error.message });
+    }
+  };
